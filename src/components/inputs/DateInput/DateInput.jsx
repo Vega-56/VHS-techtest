@@ -74,6 +74,7 @@ const DateInputContainer = styled.div`
 		display: flex;
 		justify-content: space-between;
 	}
+
 	#month,
 	#day,
 	#year,
@@ -153,16 +154,30 @@ const DateInputContainer = styled.div`
 
 		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
 		border-radius: 4px;
+
+		&:hover,
+		&:focus {
+			background: #3a3f46;
+		}
 	}
 
 	select::-webkit-scrollbar {
-		width: 5px;
-		height: 8px;
-		background-color: #aaa; /* or add it to the track */
+		width: 10px;
+		background: #3a3f46;
 	}
 
-	.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
-		background: #000;
+	select {
+		scrollbar-color: red;
+		scrollbar-width: thin;
+		scrollbar-color: red green;
+	}
+
+	select::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	select::-webkit-scrollbar-thumb {
+		background: rgba(240, 248, 255, 0.12);
+		border-radius: 3.5px;
 	}
 `;
 export const DateInput = ({ inputName, isRequired }) => {

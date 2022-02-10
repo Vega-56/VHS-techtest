@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
@@ -67,14 +67,29 @@ const InputContainer = styled.div`
 	}
 `;
 
-export const TextInput = ({ inputName, isRequired }) => {
+// const errorMessage = styled.span``;
+export const TextInput = ({ inputName, isRequired, isValid, handleBlur }) => {
+	const [showValidStyling, setShowValidStyling] = useState(false);
+	const validateField = (event) => {
+		if (!event.target.value.length || event.target.value.length <= 0) {
+			setShowValidStyling(false)
+			handleBlur(false);
+		}
+		// isValid ? setShowValidStyling(false) : setShowValidStyling(true);
+		console.log(isValid);
+	};
 	return (
 		<InputContainer>
-			<label className="label-text">
+			<label className={isValid && showValidStyling ? "" : "error"}>
 				{inputName}
 				{isRequired ? "*" : ""}
 			</label>
-			<input />
+			<input onBlur={(event) => validateField(event)} />
+			{isValid && showValidStyling ? (
+				<></>
+			) : (
+				<span>This field is required</span>
+			)}
 		</InputContainer>
 	);
 };
@@ -82,4 +97,6 @@ export const TextInput = ({ inputName, isRequired }) => {
 TextInput.propTypes = {
 	inputName: PropTypes.string,
 	isRequired: PropTypes.bool,
+	isValid: PropTypes.bool,
+	handleBlur: PropTypes.any,
 };

@@ -8,7 +8,7 @@ import {
 	EmailInput,
 } from "../../inputs";
 import styled from "@emotion/styled";
-// import { useState } from "react/cjs/react.development";
+import { useState } from "react/cjs/react.development";
 
 const FormContainer = styled.form`
 	display: flex;
@@ -120,17 +120,30 @@ const DiscardBtn = styled.button`
 	margin: 0px 16px;
 `;
 export const AccountDetailsForm = () => {
-	// const validateFields = () => {
-	// 	if (isValid.phone && isValid.email) {
-	// 		// Toast notification
-	// 		setIsValid({ phone: false, email: false });
-	// 	}
-	// };
-	// const [isValid, setIsValid] = useState({ phone: false, email: false });
+	const [isValid, setIsValid] = useState({ firstName: false });
+
+	const handleBlur = (fields) => {
+		setIsValid(fields);
+	};
+
+	const validateFields = () => {
+		if (isValid.firstName) {
+			// Toast notification
+			setIsValid((prev) => {
+				return { ...prev, firstName: false };
+			});
+		}
+	};
+
 	return (
 		<FormContainer>
 			<h1>Settings</h1>
-			<TextInput inputName="First Name" isRequired={true} />
+			<TextInput
+				inputName="First Name"
+				isRequired={true}
+				isValid
+				handleBlur={() => handleBlur}
+			/>
 			<TextInput inputName="Last Name" isRequired={true} />
 
 			<EmailInput
@@ -147,7 +160,7 @@ export const AccountDetailsForm = () => {
 			<TextAreaInput inputName="Bio" isRequired={true} />
 			<hr />
 			<BtnContainer>
-				<SubmitBtn>Save Changes</SubmitBtn>
+				<SubmitBtn onSubmit={validateFields}>Save Changes</SubmitBtn>
 				<DiscardBtn>Discard</DiscardBtn>
 			</BtnContainer>
 		</FormContainer>
