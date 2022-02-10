@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# VHS Tech Test
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tasks of User Story/Requirements UnAddressed
+
+- Field Validation
+- Toast Notification
+- Complete styling
+- Working image upload
+- React component tests using React-Testing-Library and Jest
 
 ## Available Scripts
 
@@ -16,8 +23,7 @@ You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Utilises jest to test files (No tests implemented at this time)
 
 ### `npm run build`
 
