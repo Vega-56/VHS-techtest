@@ -8,6 +8,8 @@ const PageContainer = styled.div`
 	position: relative;
 	width: 1920px;
 	height: 1159px;
+	font-family: Montserrat;
+	font-style: normal;
 `;
 export const AccountDetails = () => {
 	return (

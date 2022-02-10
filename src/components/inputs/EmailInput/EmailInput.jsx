@@ -59,15 +59,18 @@ const InputContainer = styled.div`
 		background: rgba(240, 248, 255, 0.04);
 		/* white/03.help */
 
+		color: #f0f8ff;
+
 		border: 1px solid rgba(240, 248, 255, 0.32);
 		box-sizing: border-box;
 		border-radius: 4px;
 
-		input:focus {
+		outline: none;
+		&:focus {
 			border: 1px solid #27b18a;
 		}
 
-		input:hover {
+		&:hover {
 			border: 1px solid #f0f8ff;
 		}
 	}

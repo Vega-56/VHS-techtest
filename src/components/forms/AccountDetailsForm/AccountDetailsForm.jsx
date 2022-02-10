@@ -21,6 +21,7 @@ const FormContainer = styled.form`
 	height: 867px;
 	left: 460px;
 	top: 132px;
+	outline: none;
 
 	h1 {
 		font-style: normal;
@@ -54,8 +55,15 @@ const FormContainer = styled.form`
 `;
 
 const BtnContainer = styled.div`
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	/* or 150% */
+
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: flex-start;
 	padding: 0px;
 
@@ -92,6 +100,8 @@ const SubmitBtn = styled.button`
 `;
 
 const DiscardBtn = styled.button`
+	width: 113px;
+	height: 44px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -117,13 +127,12 @@ export const AccountDetailsForm = () => {
 	// 	}
 	// };
 	// const [isValid, setIsValid] = useState({ phone: false, email: false });
-
 	return (
 		<FormContainer>
 			<h1>Settings</h1>
 			<TextInput inputName="First Name" isRequired={true} />
 			<TextInput inputName="Last Name" isRequired={true} />
-			<DateInput inputName="Select your date of birth" isRequired={true} />
+
 			<EmailInput
 				inputName="Email"
 				isRequired={true}
@@ -134,6 +143,7 @@ export const AccountDetailsForm = () => {
 				isRequired={true}
 				// isValid={isValid.phone}
 			/>
+			<DateInput inputName="Select your date of birth" isRequired={true} />
 			<TextAreaInput inputName="Bio" isRequired={true} />
 			<hr />
 			<BtnContainer>

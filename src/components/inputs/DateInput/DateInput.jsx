@@ -54,17 +54,25 @@ const dayOptions = () => {
 };
 
 const DateInputContainer = styled.div`
-	* {
-		font-family: Montserrat;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 16px;
-		line-height: 24px;
-		/* or 150% */
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	/* or 150% */
 
-		/* white/02.secondary */
+	/* white/02.secondary */
 
-		color: rgba(240, 248, 255, 0.64);
+	color: rgba(240, 248, 255, 0.64);
+
+	width: 487px;
+	height: 68px;
+	left: 0px;
+	top: 488px;
+
+	.select-container {
+		display: flex;
+		justify-content: space-between;
 	}
 	#month,
 	#day,
@@ -81,6 +89,14 @@ const DateInputContainer = styled.div`
 		font-weight: 500;
 		font-size: 16px;
 		line-height: 24px;
+		outline: none;
+
+		&:focus {
+			border: 1px solid #27b18a;
+		}
+		&:hover {
+			border: 1px solid #f0f8ff;
+		}
 	}
 	#month {
 		width: 176px;
@@ -156,7 +172,7 @@ export const DateInput = ({ inputName, isRequired }) => {
 				{inputName}
 				{isRequired ? "*" : ""}
 			</label>
-			<div>
+			<div className="select-container">
 				<select name="month" id="month">
 					{monthOptions()}
 				</select>
