@@ -2,6 +2,8 @@ import React from "react";
 
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
+import { useFormContext } from "react-hook-form";
+import { Label, ErrorMessage } from "../styledComponents";
 const monthOptions = () => {
 	const monthNames = [
 		"January",
@@ -19,7 +21,7 @@ const monthOptions = () => {
 	];
 	return monthNames.map((month, index) => {
 		return (
-			<option className="option" value={index + 1} key={index}>
+			<option className="option" value={index + 1} key={index + 1}>
 				{month}
 			</option>
 		);
@@ -54,121 +56,125 @@ const dayOptions = () => {
 };
 
 const DateInputContainer = styled.div`
-	* {
-		font-family: Montserrat;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 16px;
-		line-height: 24px;
-		/* or 150% */
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
 
-		/* white/02.secondary */
+	width: 100%;
 
-		color: rgba(240, 248, 255, 0.64);
+	margin: 4px 0;
+`;
+
+const SelectContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+`;
+
+const DateSelect = styled.select`
+	font-family: Montserrat, "Times New Roman";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 10px 16px;
+
+	border: 1px solid rgba(240, 248, 255, 0.32);
+	border-radius: 4px;
+
+	background: rgba(240, 248, 255, 0.04);
+	color: #f0f8ff;
+
+	outline: none;
+	&:hover {
+		border: 1px solid #f0f8ff;
 	}
-	#month,
-	#day,
-	#year,
-	option {
-		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
-		padding: 10px 16px;
-
-		color: #f0f8ff;
-		font-family: Montserrat;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 16px;
-		line-height: 24px;
+	&:focus {
+		border: 1px solid #27b18a;
 	}
-	#month {
-		width: 176px;
-		left: calc(50% - 176px / 2 - 155.5px);
-		top: 35.29%;
-		bottom: 0%;
-
-		/* white/06.slight */
-
-		background: rgba(240, 248, 255, 0.04);
-		/* white/03.help */
-
-		border: 1px solid rgba(240, 248, 255, 0.32);
-		box-sizing: border-box;
-		border-radius: 4px;
-	}
-
-	#day {
-		/* White / Slight White */
-
-		background: rgba(240, 248, 255, 0.04);
-		/* White/Help */
-
-		border: 1px solid rgba(240, 248, 255, 0.32);
-		box-sizing: border-box;
-		border-radius: 4px;
+	&.error {
+		border: 1px solid #e32636;
 	}
 
-	#year {
-		position: static;
-		width: 137px;
-		left: calc(50% - 137px / 2);
-		top: 0%;
-		bottom: 0%;
-
-		/* White / Slight White */
-
-		background: rgba(240, 248, 255, 0.04);
-		/* White/Help */
-
-		border: 1px solid rgba(240, 248, 255, 0.32);
-		box-sizing: border-box;
-		border-radius: 4px;
-	}
-	option {
-		padding: 8px 0px;
-
+	&::-webkit-scrollbar {
+		width: 10px;
 		background: #3a3f46;
-		/* White / Decorative */
-
-		border: 1px solid rgba(240, 248, 255, 0.12);
-		box-sizing: border-box;
-		/* shadow */
-
-		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
-		border-radius: 4px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: rgba(240, 248, 255, 0.12);
+		border-radius: 3.5px;
 	}
 
-	select::-webkit-scrollbar {
-		width: 5px;
-		height: 8px;
-		background-color: #aaa; /* or add it to the track */
-	}
-
-	.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
-		background: #000;
+	option {
+		background: #3a3f46;
+		&[disabled] {
+			display: none;
+			color: rgba(240, 248, 255, 0.32);
+		}
 	}
 `;
+
 export const DateInput = ({ inputName, isRequired }) => {
+	const {
+		register,
+		formState: { errors },
+	} = useFormContext();
+
 	return (
 		<DateInputContainer>
-			<label>
+			<Label>
 				{inputName}
 				{isRequired ? "*" : ""}
-			</label>
-			<div>
-				<select name="month" id="month">
+			</Label>
+
+			<SelectContainer className="select-container">
+				<DateSelect
+					name="month"
+					defaultValue="month"
+					className={
+						"date-input " +
+						(errors["month"]?.type === "required" ? "error" : "")
+					}
+					{...register(`month`, {
+						required: isRequired,
+					})}
+				>
 					{monthOptions()}
-				</select>
+				</DateSelect>
 
-				<select name="day" id="day">
+				<DateSelect
+					name="day"
+					className={
+						"date-input " + (errors["day"]?.type === "required" ? "error" : "")
+					}
+					{...register(`day`, {
+						required: isRequired,
+					})}
+				>
 					{dayOptions()}
-				</select>
+				</DateSelect>
 
-				<select name="year" id="year">
+				<DateSelect
+					name="year"
+					className={
+						"date-input " + (errors["year"]?.type === "required" ? "error" : "")
+					}
+					{...register(`year`, {
+						required: isRequired,
+					})}
+				>
 					{yearOptions()}
-				</select>
-			</div>
+				</DateSelect>
+			</SelectContainer>
+			<ErrorMessage>
+				{errors["month"]?.type === "required" && "This field is required"}
+			</ErrorMessage>
 		</DateInputContainer>
 	);
 };
