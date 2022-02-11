@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
+import { useFormContext } from "react-hook-form";
+
 const InputContainer = styled.div`
 	* {
 		font-family: Montserrat;
@@ -68,28 +70,35 @@ const InputContainer = styled.div`
 `;
 
 // const errorMessage = styled.span``;
-export const TextInput = ({ inputName, isRequired, isValid, handleBlur }) => {
-	const [showValidStyling, setShowValidStyling] = useState(false);
-	const validateField = (event) => {
-		if (!event.target.value.length || event.target.value.length <= 0) {
-			setShowValidStyling(false)
-			handleBlur(false);
-		}
-		// isValid ? setShowValidStyling(false) : setShowValidStyling(true);
-		console.log(isValid);
-	};
+export const TextInput = ({ inputName, isRequired }) => {
+	// const [showValidStyling, setShowValidStyling] = useState(false);
+	// const handleBlur = (event) => {
+	// 	if (!event.target.value.length || event.target.value.length <= 0) {
+	// 		setShowValidStyling(false);
+	// 		setIsValid({});
+	// 	}
+
+	// 	// isValid ? setShowValidStyling(false) : setShowValidStyling(true);
+	// 	console.log(isValid);
+	// };
+	const { register, getFieldState } = useFormContext();
+
 	return (
 		<InputContainer>
-			<label className={isValid && showValidStyling ? "" : "error"}>
+			<label>
 				{inputName}
 				{isRequired ? "*" : ""}
 			</label>
-			<input onBlur={(event) => validateField(event)} />
-			{isValid && showValidStyling ? (
-				<></>
-			) : (
-				<span>This field is required</span>
-			)}
+			<input
+				type="text"
+				{...register(inputName, {
+					required: isRequired,
+				})}
+			/>
+			{/* {errors[inputName]?.type === "required" && "This field is required"} */}
+			<span>
+				{getFieldState(inputName).invalid && "This field is required"}
+			</span>
 		</InputContainer>
 	);
 };
@@ -98,5 +107,5 @@ TextInput.propTypes = {
 	inputName: PropTypes.string,
 	isRequired: PropTypes.bool,
 	isValid: PropTypes.bool,
-	handleBlur: PropTypes.any,
+	setIsValid: PropTypes.func,
 };

@@ -8,8 +8,8 @@ import {
 	EmailInput,
 } from "../../inputs";
 import styled from "@emotion/styled";
-import { useState } from "react/cjs/react.development";
 
+import { useForm, FormProvider } from "react-hook-form";
 const FormContainer = styled.form`
 	display: flex;
 	flex-direction: column;
@@ -120,49 +120,44 @@ const DiscardBtn = styled.button`
 	margin: 0px 16px;
 `;
 export const AccountDetailsForm = () => {
-	const [isValid, setIsValid] = useState({ firstName: false });
-
-	const handleBlur = (fields) => {
-		setIsValid(fields);
-	};
-
-	const validateFields = () => {
-		if (isValid.firstName) {
-			// Toast notification
-			setIsValid((prev) => {
-				return { ...prev, firstName: false };
-			});
-		}
+	const methods = useForm({ mode: "onBlur" });
+	const onSubmit = (data) => {
+		console.log(data);
 	};
 
 	return (
-		<FormContainer>
-			<h1>Settings</h1>
-			<TextInput
-				inputName="First Name"
-				isRequired={true}
-				isValid
-				handleBlur={() => handleBlur}
-			/>
-			<TextInput inputName="Last Name" isRequired={true} />
+		<FormProvider {...methods}>
+			<FormContainer
+				name="account-details"
+				// onSubmit={handleSubmit}
+				onSubmit={methods.handleSubmit(onSubmit)}
+			>
+				<h1>Settings</h1>
+				<TextInput
+					inputName="First Name"
+					isRequired={true}
+					// setIsValid={handleBlur}
+				/>
+				<TextInput inputName="Last Name" isRequired={true} />
 
-			<EmailInput
-				inputName="Email"
-				isRequired={true}
-				// isValid={isValid.email}
-			/>
-			<PhoneInput
-				inputName="Number"
-				isRequired={true}
-				// isValid={isValid.phone}
-			/>
-			<DateInput inputName="Select your date of birth" isRequired={true} />
-			<TextAreaInput inputName="Bio" isRequired={true} />
-			<hr />
-			<BtnContainer>
-				<SubmitBtn onSubmit={validateFields}>Save Changes</SubmitBtn>
-				<DiscardBtn>Discard</DiscardBtn>
-			</BtnContainer>
-		</FormContainer>
+				<EmailInput
+					inputName="Email"
+					isRequired={true}
+					// isValid={isValid.email}
+				/>
+				<PhoneInput
+					inputName="Number"
+					isRequired={true}
+					// isValid={isValid.phone}
+				/>
+				<DateInput inputName="Select your date of birth" isRequired={true} />
+				<TextAreaInput inputName="Bio" isRequired={true} />
+				<hr />
+				<BtnContainer>
+					<SubmitBtn>Save Changes</SubmitBtn>
+					<DiscardBtn>Discard</DiscardBtn>
+				</BtnContainer>
+			</FormContainer>
+		</FormProvider>
 	);
 };
