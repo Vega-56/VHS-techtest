@@ -75,7 +75,6 @@ export const PhoneInput = ({ inputName, isRequired }) => {
 				{...register(inputName, {
 					required: isRequired,
 					maxLength: 12,
-					pattern: /^\S+@\S+$/i,
 				})}
 			/>
 			<ErrorMessage>

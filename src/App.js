@@ -1,6 +1,7 @@
 import React from "react";
 import { AccountDetails } from "./components/pages";
 import { Global, css } from "@emotion/react";
+
 const GlobalStyles = css`
 	html {
 		background: #22262d;

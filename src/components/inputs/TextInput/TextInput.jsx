@@ -5,7 +5,8 @@ import styled from "@emotion/styled";
 import { useFormContext } from "react-hook-form";
 import { Label, ErrorMessage } from "../styledComponents";
 const InputContainer = styled.div`
-width: 100%;
+	width: 100%;
+
 	/* white/02.secondary */
 	color: rgba(240, 248, 255, 0.64)
 
@@ -31,6 +32,7 @@ width: 100%;
 `;
 
 const Input = styled.input`
+	font-family: Montserrat, "Times New Roman";
 	padding: 10px 16px;
 	font-size: 16px;
 	line-height: 24px;

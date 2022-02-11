@@ -10,6 +10,8 @@ import {
 import styled from "@emotion/styled";
 
 import { useForm, FormProvider } from "react-hook-form";
+import { toast } from "react-toastify";
+import successIcon from "../../../assets/toastIcons/icontoastconfirm.svg";
 const FormContainer = styled.form`
 	display: flex;
 	width: 100%;
@@ -63,7 +65,7 @@ const SubmitBtn = styled.button`
 	line-height: 24px;
 	color: #f0f8ff;
 	/* Gradients/Green Button */
-	width: 40%;
+	width: 33%;
 	height: 100%;
 
 	background: linear-gradient(90deg, #27b18a 0%, #317d6c 100%);
@@ -111,41 +113,43 @@ const DiscardBtn = styled.button`
 		box-shadow: 0px 0px 8px rgba(235, 18, 2, 0.33);
 	}
 `;
+
+const SuccessMessage = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
 export const AccountDetailsForm = () => {
 	const methods = useForm({ mode: "onBlur" });
 
+	const notify = () => {
+		toast(
+			<SuccessMessage>
+				<img src={successIcon} />
+				<div>Changes Have Been Saved Sucessfully</div>
+			</SuccessMessage>
+		);
+	};
 	const handleClick = (event) => {
 		event.preventDefault();
 	};
 	const onSubmit = (data) => {
 		console.log(data);
+		notify();
 	};
 
 	return (
 		<FormProvider {...methods}>
 			<FormContainer
 				name="account-details"
-				// onSubmit={handleSubmit}
 				onSubmit={methods.handleSubmit(onSubmit)}
 			>
 				<FormTitle>Settings</FormTitle>
-				<TextInput
-					inputName="First Name"
-					isRequired={true}
-					// setIsValid={handleBlur}
-				/>
+				<TextInput inputName="First Name" isRequired={true} />
 				<TextInput inputName="Last Name" isRequired={true} />
 
-				<EmailInput
-					inputName="Email"
-					isRequired={true}
-					// isValid={isValid.email}
-				/>
-				<PhoneInput
-					inputName="Number"
-					isRequired={true}
-					// isValid={isValid.phone}
-				/>
+				<EmailInput inputName="Email" isRequired={true} />
+				<PhoneInput inputName="Number" isRequired={true} />
 				<DateInput inputName="Select your date of birth" isRequired={true} />
 				<TextAreaInput inputName="Bio" isRequired={true} />
 				<Divider />
