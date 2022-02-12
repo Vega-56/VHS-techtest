@@ -27,7 +27,8 @@ Utilises jest to test files
 ## Known Bugs/Issues
  - Confirm notification will not go away by itself or when clicked (requires full refresh of page)
  - Default value for phone field cannot include 0 at start (linter prevents invalid numbers)
- - Page is not resposive and breaks when resized
+ - Page visuals break when resized
+ - Date field does not scale appropiately at lower screen widths
 
 ## Default React Scripts
 
