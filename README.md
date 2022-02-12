@@ -24,6 +24,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 Utilises jest to test files
 
+## Known Bugs/Issues
+ - Confirm notification will not go away by itself or when clicked (requires full refresh of page)
+ - Default value for phone field cannot include 0 at start (linter prevents invalid numbers)
+
 ## Default React Scripts
 
 ### `npm run build`
