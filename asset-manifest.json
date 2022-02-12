@@ -1,12 +1,17 @@
 {
   "files": {
-    "main.js": "/VHS-techtest/static/js/main.03a34ebd.js",
+    "main.css": "/VHS-techtest/static/css/main.0bf13a09.css",
+    "main.js": "/VHS-techtest/static/js/main.f1e63d03.js",
     "static/js/787.e249fe37.chunk.js": "/VHS-techtest/static/js/787.e249fe37.chunk.js",
+    "static/media/iconaddimg.svg": "/VHS-techtest/static/media/iconaddimg.b087ed80239399fd7c64d66682265b36.svg",
+    "static/media/icontoastconfirm.svg": "/VHS-techtest/static/media/icontoastconfirm.56b2afe81aaa5d9f6dcbb2ba953eaf20.svg",
     "index.html": "/VHS-techtest/index.html",
-    "main.03a34ebd.js.map": "/VHS-techtest/static/js/main.03a34ebd.js.map",
+    "main.0bf13a09.css.map": "/VHS-techtest/static/css/main.0bf13a09.css.map",
+    "main.f1e63d03.js.map": "/VHS-techtest/static/js/main.f1e63d03.js.map",
     "787.e249fe37.chunk.js.map": "/VHS-techtest/static/js/787.e249fe37.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.03a34ebd.js"
+    "static/css/main.0bf13a09.css",
+    "static/js/main.f1e63d03.js"
   ]
 }
