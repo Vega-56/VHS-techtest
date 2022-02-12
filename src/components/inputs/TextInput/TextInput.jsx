@@ -72,11 +72,13 @@ export const TextInput = ({ inputName, isRequired }) => {
 
 	return (
 		<InputContainer>
-			<Label>
+			<Label htmlFor={inputName}>
 				{inputName}
 				{isRequired ? "*" : ""}
 			</Label>
 			<Input
+				name={inputName}
+				id={inputName}
 				type="text"
 				className={errors[inputName]?.type === "required" ? "error" : ""}
 				{...register(inputName, {
