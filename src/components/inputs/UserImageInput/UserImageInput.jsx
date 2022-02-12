@@ -61,6 +61,7 @@ export const UserImageInput = ({ inputName, isRequired }) => {
 			});
 
 			// Fix opening of Image Upload After Removing
+			// TODO: Find alternative to prevent overlap of events
 			setTimeout(() => {
 				setIsUploaded(false);
 			}, 100);

@@ -64,7 +64,7 @@ const Input = styled.input`
 	}
 `;
 
-export const TextInput = ({ inputName, isRequired }) => {
+export const TextInput = ({ inputName, isRequired, defaultValue }) => {
 	const {
 		register,
 		formState: { errors },
@@ -72,12 +72,15 @@ export const TextInput = ({ inputName, isRequired }) => {
 
 	return (
 		<InputContainer>
-			<Label>
+			<Label htmlFor={inputName}>
 				{inputName}
 				{isRequired ? "*" : ""}
 			</Label>
 			<Input
+				name={inputName}
+				id={inputName}
 				type="text"
+				defaultValue={defaultValue}
 				className={errors[inputName]?.type === "required" ? "error" : ""}
 				{...register(inputName, {
 					required: isRequired,
@@ -93,6 +96,5 @@ export const TextInput = ({ inputName, isRequired }) => {
 TextInput.propTypes = {
 	inputName: PropTypes.string,
 	isRequired: PropTypes.bool,
-	isValid: PropTypes.bool,
-	setIsValid: PropTypes.func,
+	defaultValue: PropTypes.string,
 };

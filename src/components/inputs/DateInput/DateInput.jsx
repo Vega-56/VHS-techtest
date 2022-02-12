@@ -182,5 +182,4 @@ export const DateInput = ({ inputName, isRequired }) => {
 DateInput.propTypes = {
 	inputName: PropTypes.string,
 	isRequired: PropTypes.bool,
-	isValid: PropTypes.bool,
 };

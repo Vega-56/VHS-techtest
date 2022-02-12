@@ -145,13 +145,33 @@ export const AccountDetailsForm = () => {
 				onSubmit={methods.handleSubmit(onSubmit)}
 			>
 				<FormTitle>Settings</FormTitle>
-				<TextInput inputName="First Name" isRequired={true} />
-				<TextInput inputName="Last Name" isRequired={true} />
+				<TextInput
+					inputName="First Name"
+					isRequired={true}
+					defaultValue={"Donald"}
+				/>
+				<TextInput
+					inputName="Last Name"
+					isRequired={true}
+					defaultValue={"Norman"}
+				/>
 
-				<EmailInput inputName="Email" isRequired={true} />
-				<PhoneInput inputName="Number" isRequired={true} />
+				<EmailInput
+					inputName="Email"
+					isRequired={true}
+					defaultValue={"useremail@email.com"}
+				/>
+				<PhoneInput
+					inputName="Number"
+					isRequired={true}
+					defaultValue={8963648018}
+				/>
 				<DateInput inputName="Select your date of birth" isRequired={true} />
-				<TextAreaInput inputName="Bio" isRequired={true} />
+				<TextAreaInput
+					inputName="Bio"
+					isRequired={true}
+					defaultValue={"Lorem Ipsum ..."}
+				/>
 				<Divider />
 				<BtnContainer>
 					<SubmitBtn>Save Changes</SubmitBtn>

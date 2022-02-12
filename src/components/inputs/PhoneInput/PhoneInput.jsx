@@ -51,7 +51,7 @@ const Input = styled.input`
 	}
 `;
 
-export const PhoneInput = ({ inputName, isRequired }) => {
+export const PhoneInput = ({ inputName, isRequired, defaultValue }) => {
 	const {
 		register,
 		formState: { errors },
@@ -65,7 +65,7 @@ export const PhoneInput = ({ inputName, isRequired }) => {
 			</Label>
 			<Input
 				type="number"
-				maxLength="12"
+				defaultValue={defaultValue}
 				className={
 					errors[inputName]?.type === "required" ||
 					errors[inputName]?.type === "maxLength"
@@ -89,5 +89,5 @@ export const PhoneInput = ({ inputName, isRequired }) => {
 PhoneInput.propTypes = {
 	inputName: PropTypes.string,
 	isRequired: PropTypes.bool,
-	// isValid: PropTypes.bool,
+	defaultValue: PropTypes.number,
 };

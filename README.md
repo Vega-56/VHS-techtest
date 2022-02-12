@@ -1,13 +1,16 @@
 # VHS Tech Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Tasks of User Story/Requirements UnAddressed
+React Based Form with following criteria met:
 
 - Field Validation
 - Toast Notification
-- Complete styling
+- Styling
 - Working image upload
-- React component tests using React-Testing-Library and Jest
+- React component unit tests using React-Testing-Library and Jest
+
+## Installation/Setup
+
+Use `npm install` or `yarn install` to install all required dependencies
 
 ## Available Scripts
 
@@ -15,15 +18,13 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### `npm test`
 
-Utilises jest to test files (No tests implemented at this time)
+Utilises jest to test files
+
+## Default React Scripts
 
 ### `npm run build`
 
