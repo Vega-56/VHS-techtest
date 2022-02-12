@@ -1,10 +1,16 @@
 # VHS Tech Test
-  React Based Form with following criteria met
+
+React Based Form with following criteria met:
+
 - Field Validation
 - Toast Notification
-- Complete styling
+- Styling
 - Working image upload
-- React component tests using React-Testing-Library and Jest
+- React component unit tests using React-Testing-Library and Jest
+
+## Installation/Setup
+
+Use `npm install` or `yarn install` to install all required dependencies
 
 ## Available Scripts
 

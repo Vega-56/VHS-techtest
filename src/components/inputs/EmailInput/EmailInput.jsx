@@ -49,7 +49,7 @@ const Input = styled.input`
 	}
 `;
 
-export const EmailInput = ({ inputName, isRequired }) => {
+export const EmailInput = ({ inputName, isRequired, defaultValue }) => {
 	const {
 		register,
 		formState: { errors },
@@ -63,6 +63,7 @@ export const EmailInput = ({ inputName, isRequired }) => {
 			</Label>
 			<Input
 				type="email"
+				defaultValue={defaultValue}
 				className={
 					errors[inputName]?.type === "required" ||
 					errors[inputName]?.type === "pattern"
@@ -85,4 +86,5 @@ export const EmailInput = ({ inputName, isRequired }) => {
 EmailInput.propTypes = {
 	inputName: PropTypes.string,
 	isRequired: PropTypes.bool,
+	defaultValue: PropTypes.string,
 };

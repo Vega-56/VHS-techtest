@@ -15,6 +15,7 @@ const TextArea = styled.textarea`
 	line-height: 24px;
 
 	width: 100%;
+	min-height: 8rem;
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -60,7 +61,7 @@ const TextArea = styled.textarea`
 		border-radius: 3.5px;
 	}
 `;
-export const TextAreaInput = ({ inputName, isRequired }) => {
+export const TextAreaInput = ({ inputName, isRequired, defaultValue }) => {
 	const {
 		register,
 		formState: { errors },
@@ -75,6 +76,7 @@ export const TextAreaInput = ({ inputName, isRequired }) => {
 			<TextArea
 				name={inputName}
 				id={inputName}
+				defaultValue={defaultValue}
 				className={errors[inputName]?.type === "required" ? "error" : ""}
 				{...register(inputName, {
 					required: isRequired,
@@ -90,4 +92,5 @@ export const TextAreaInput = ({ inputName, isRequired }) => {
 TextAreaInput.propTypes = {
 	inputName: PropTypes.string,
 	isRequired: PropTypes.bool,
+	defaultValue: PropTypes.string,
 };
