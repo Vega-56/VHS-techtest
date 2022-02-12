@@ -89,5 +89,4 @@ export const PhoneInput = ({ inputName, isRequired }) => {
 PhoneInput.propTypes = {
 	inputName: PropTypes.string,
 	isRequired: PropTypes.bool,
-	// isValid: PropTypes.bool,
 };

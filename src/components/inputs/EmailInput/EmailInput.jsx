@@ -85,5 +85,4 @@ export const EmailInput = ({ inputName, isRequired }) => {
 EmailInput.propTypes = {
 	inputName: PropTypes.string,
 	isRequired: PropTypes.bool,
-	// isValid: PropTypes.bool,
 };

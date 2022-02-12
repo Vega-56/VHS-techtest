@@ -15,5 +15,5 @@ const MockedForm = ({ component }) => {
 };
 
 export const renderWithFormContext = (component) => {
-	render(<MockedForm component={component}/>);
+	return render(<MockedForm component={component}/>);
 };

@@ -95,6 +95,4 @@ export const TextInput = ({ inputName, isRequired }) => {
 TextInput.propTypes = {
 	inputName: PropTypes.string,
 	isRequired: PropTypes.bool,
-	isValid: PropTypes.bool,
-	setIsValid: PropTypes.func,
 };
